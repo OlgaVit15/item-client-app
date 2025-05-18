@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Укажите вашу основную ветку
+  pull_request:
+    branches:
+      - main  # Укажите вашу основную ветку
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest  # Используйте последнюю версию Ubuntu
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Клонирует ваш репозиторий
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # Укажите версию Node.js, которую вы используете
+
+    - name: Install dependencies
+      run: npm install  # Устанавливает зависимости вашего проекта
+
+    - name: Run tests
+      run: npm test  # Запускает ваши тесты
