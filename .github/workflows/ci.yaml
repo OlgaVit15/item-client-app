@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - main  # Укажите вашу основную ветку
+      - master  # Укажите вашу основную ветку
   pull_request:
     branches:
-      - main  # Укажите вашу основную ветку
+      - master  # Укажите вашу основную ветку
 
 jobs:
   build:
