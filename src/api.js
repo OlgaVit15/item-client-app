@@ -1,6 +1,8 @@
 import { default as axios } from 'axios';
 
-const API_URL = 'http://localhost:8080/items'; // Замените на ваш URL
+//const API_URL = process.env.APP_API_URL;//'http://app:30080/items'; // Замените на ваш URL
+
+const API_URL = `${window.location.protocol}//${window.location.hostname}:30080/items`;
 
 export const fetchItems = async () => {
     const response = await axios.get(API_URL);
