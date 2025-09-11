@@ -64,7 +64,6 @@ jobs:
                           -Dsonar.sources=. 
                           -Dsonar.branch.name=${{ github.head_ref }} 
                           -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info 
-                          # -Dsonar.exclusions=**/*.test.js,**/*.spec.js,**/src/App.js,**/babel.config.js,**/src/index.js,**/src/jest.config.js,**/src/reportWebVitals.js,**/server.js
                           -Dsonar.qualitygate.wait=true
 
   test:
