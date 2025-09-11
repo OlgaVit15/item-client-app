@@ -60,6 +60,7 @@ jobs:
                           -Dsonar.projectName=DevOps 
                           -Dsonar.sources=. 
                           -Dsonar.branch.name=${{ github.head_ref }} 
+                          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info 
                           -Dsonar.exclusions=**/*.test.js,**/*.spec.js 
                           -Dsonar.qualitygate.wait=true
 
@@ -102,5 +103,5 @@ jobs:
       - name: Push Docker image
         run: |
           docker push vvo15/my-image1:${{ github.sha }}
-          
+
           
