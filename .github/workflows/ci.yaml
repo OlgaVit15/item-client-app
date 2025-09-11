@@ -104,6 +104,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push vvo15/my-image1:${{ github.sha }}
-
-          
+          docker push vvo15/my-image1:${{ github.sha }}        
