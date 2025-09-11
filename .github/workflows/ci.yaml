@@ -25,43 +25,43 @@ jobs:
         run: npm install  
 
   sonarqube:
-  runs-on: ubuntu-latest
-  needs: build
+    runs-on: ubuntu-latest
+    needs: build
 
-  steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    
-    # Установка Node.js
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16' # Укажите нужную версию Node.js
-
-    # Установка зависимостей
-    - name: Install dependencies
-      run: npm install
-
-    # Сборка проекта
-    - name: Build project
-      run: npm run build
-
-    # Установка sonar-scanner
-    - name: Setup SonarCloud Scanner
-      uses: warchant/setup-sonar-scanner@v7
-
-    # SonarCloud Scan
-    - name: SonarCloud Scan
-      run: sonar-scanner -Dsonar.host.url=https://sonarcloud.io 
-                        -Dsonar.organization=olgavit15 
-                        -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
-                        -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} 
-                        -Dsonar.projectName=DevOps 
-                        -Dsonar.sources=. 
-                        -Dsonar.branch.name=${{ github.head_ref }} 
-                        -Dsonar.exclusions=**/*.test.js,**/*.spec.js 
-                        -Dsonar.qualitygate.wait=true
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      # Установка Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Укажите нужную версию Node.js
+  
+      # Установка зависимостей
+      - name: Install dependencies
+        run: npm install
+  
+      # Сборка проекта
+      - name: Build project
+        run: npm run build
+  
+      # Установка sonar-scanner
+      - name: Setup SonarCloud Scanner
+        uses: warchant/setup-sonar-scanner@v7
+  
+      # SonarCloud Scan
+      - name: SonarCloud Scan
+        run: sonar-scanner -Dsonar.host.url=https://sonarcloud.io 
+                          -Dsonar.organization=olgavit15 
+                          -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
+                          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} 
+                          -Dsonar.projectName=DevOps 
+                          -Dsonar.sources=. 
+                          -Dsonar.branch.name=${{ github.head_ref }} 
+                          -Dsonar.exclusions=**/*.test.js,**/*.spec.js 
+                          -Dsonar.qualitygate.wait=true
 
   test:
     runs-on: ubuntu-latest  
