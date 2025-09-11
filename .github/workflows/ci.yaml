@@ -46,6 +46,9 @@ jobs:
       # Сборка проекта
       - name: Build project
         run: npm install
+
+      - name: Get test project
+        run: npm test -- --coverage
   
       # Установка sonar-scanner
       - name: Setup SonarCloud Scanner
