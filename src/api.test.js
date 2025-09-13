@@ -26,7 +26,7 @@ describe('API calls', () => {
         axios.delete.mockResolvedValue({});
 
         await deleteItem(id);
-        expect(axios.delete).toHaveBeenCalledWith(`${window.location.protocol}//${window.location.hostname}:30080/items/${id}`);
+        expect(axios.delete).toHaveBeenCalledWith(`${window.location.protocol}//${window.location.hostname}:8080/items/${id}`);
     });
 
     it('updateItem should update an item and return the updated data', async () => {
